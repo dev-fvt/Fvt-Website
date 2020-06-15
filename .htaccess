@@ -1,0 +1,38 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+#Enable gzip compression
+<IfModule mod_deflate.c>
+AddType x-font/woff .woff
+AddType x-font/ttf .ttf
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE text/javascript
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/x-font-ttf
+AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+AddOutputFilterByType DEFLATE font/opentype font/ttf font/eot font/otf
+</IfModule>
+# END Gzip compression
+
+#<FilesMatch "(?i)^.*\.(ico|jpeg|jfif|jpg|flv|png|gif|js|css|html|woff)$">
+#ExpiresActive on
+#</FilesMatch>
+
+AddType application/octet-stream .avi .mpg .mov .pdf .doc .csv .xls .mp4
+
+AddType text/html .html
+AddType text/html .shtml
+AddHandler server-parsed .html
+AddHandler server-parsed .shtml
+AddHandler server-parsed .htm
